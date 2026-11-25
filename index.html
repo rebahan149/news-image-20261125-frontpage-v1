@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The World at Midweek — Wednesday 25 November 2026</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1024px; height:1024px; overflow:hidden; }
+  body {
+    background:#f6f1e5; color:#1b1712;
+    font-family:"Helvetica Neue", Arial, "DejaVu Sans", sans-serif;
+    padding:13px 24px 10px 24px;
+  }
+  .serif { font-family:Georgia, "Times New Roman", "DejaVu Serif", serif; }
+
+  /* hairline */
+  .hairline {
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-top:3px solid #1b1712; border-bottom:1px solid #1b1712;
+    padding:4px 1px 3px 1px; font-size:10.5px; letter-spacing:.14em; font-weight:700;
+  }
+  .hairline .c { color:#a02318; }
+
+  /* masthead */
+  .masthead { text-align:center; padding:5px 0 1px 0; }
+  .masthead h1 {
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-size:51px; font-weight:700; letter-spacing:.005em; line-height:1.02;
+  }
+  .dateline {
+    text-align:center; font-size:12.5px; letter-spacing:.3em; font-weight:700;
+    padding:2px 0 4px 0;
+  }
+  .counts {
+    text-align:center; font-size:11px; letter-spacing:.06em; font-weight:700;
+    border-top:1.5px solid #1b1712; border-bottom:1.5px solid #1b1712;
+    padding:3px 0 3px 0;
+  }
+  .counts .dot { color:#a02318; }
+
+  /* red top-3 strip */
+  .topstrip {
+    text-align:center; padding:5px 4px 5px 4px;
+    border-bottom:1px solid #1b1712;
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-style:italic; font-size:16px;
+  }
+  .topstrip .dia { color:#b02a1e; font-style:normal; padding:0 7px; }
+
+  /* stat strip */
+  .stats { display:flex; border-bottom:2px solid #1b1712; }
+  .stat { flex:1; display:flex; align-items:center; gap:7px; padding:5px 8px 5px 8px; }
+  .stat + .stat { border-left:1px solid #b9b09a; }
+  .stat .n {
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-size:30px; font-weight:700; line-height:1; white-space:nowrap;
+  }
+  .stat .cap { font-size:8.4px; line-height:1.22; color:#3d382e; }
+
+  /* heroes */
+  .heroes { display:flex; gap:14px; padding:8px 0 0 0; }
+  .hero { flex:1; }
+  .hero .art { border:1.5px solid #1b1712; height:98px; overflow:hidden; }
+  .hero .art svg { display:block; width:100%; height:100%; }
+  .tagrow { display:flex; align-items:center; gap:6px; padding:5px 0 2px 0; }
+  .tag {
+    color:#fff; font-size:9px; font-weight:700; letter-spacing:.08em;
+    padding:2.5px 6px 2.5px 6px; white-space:nowrap;
+  }
+  .num {
+    background:#1b1712; color:#f6f1e5; border-radius:50%;
+    width:17px; height:17px; font-size:10.5px; font-weight:700;
+    display:inline-flex; align-items:center; justify-content:center; flex:none;
+  }
+  .num.light { background:#f6f1e5; color:#1b1712; border:1.4px solid #1b1712; width:15px; height:15px; font-size:9.5px; }
+  .dateloc { font-size:9.5px; font-weight:700; letter-spacing:.1em; color:#3d382e; }
+  .hero h2 {
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-size:22px; line-height:1.07; font-weight:700; padding:1px 0 4px 0;
+  }
+  .hero p { font-size:11.8px; line-height:1.3; color:#26221b; }
+  .src { font-size:8.4px; letter-spacing:.12em; color:#7a7261; padding-top:4px; font-weight:700; }
+
+  .eu { background:#1f4e79; } .me { background:#a85b12; } .as { background:#9e2a1e; }
+  .af { background:#2e7d4f; } .am { background:#5b3a9e; } .oc { background:#0e7c86; }
+  .gl { background:#55534a; }
+
+  /* grid 4-11 */
+  .grid {
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:0 14px;
+    padding:8px 0 0 0;
+  }
+  .cell { border-top:3.5px solid #1b1712; padding:5px 0 6px 0; }
+  .cell .tagrow { padding:0 0 2px 0; }
+  .cell .tag { font-size:8.4px; padding:2px 5px; }
+  .cell h3 {
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-size:16px; line-height:1.1; font-weight:700; padding:1px 0 3px 0;
+  }
+  .cell .body { display:flex; gap:7px; }
+  .cell .big {
+    font-family:Georgia, "Times New Roman", "DejaVu Serif", serif;
+    font-size:19px; font-weight:700; line-height:1.05; text-align:center;
+    min-width:52px; padding-top:1px;
+  }
+  .cell .big small { display:block; font-family:"Helvetica Neue", Arial, sans-serif; font-size:7.6px; font-weight:700; letter-spacing:.06em; color:#3d382e; padding-top:2px; }
+  .cell p { font-size:10.3px; line-height:1.27; color:#26221b; }
+
+  /* bottom: map + also */
+  .bottom { display:flex; gap:14px; padding:8px 0 0 0; }
+  .mapbox { width:338px; flex:none; }
+  .panelhead {
+    background:#1b1712; color:#f6f1e5; font-size:10px; font-weight:700;
+    letter-spacing:.1em; padding:4px 8px; display:flex; justify-content:space-between;
+  }
+  .panelhead .thin { font-weight:400; letter-spacing:.02em; color:#cfc7b2; }
+  .mapwrap { border:1.5px solid #1b1712; border-top:none; height:192px; }
+  .mapwrap svg { display:block; width:100%; height:100%; }
+  .alsobox { flex:1; }
+  .also {
+    border:1.5px solid #1b1712; border-top:none; height:192px;
+    display:grid; grid-template-columns:1fr 1fr; column-gap:16px;
+    padding:5px 9px 3px 9px; align-content:start;
+  }
+  .also .it { font-size:10.3px; line-height:1.16; padding:.8px 0; display:flex; gap:5px; align-items:flex-start; }
+  .also .it b { font-weight:700; }
+  .also .it .num { width:13px; height:13px; font-size:8px; margin-top:0; }
+
+  /* footer */
+  .footer { padding:7px 0 0 0; }
+  .datecheck {
+    border:1.5px solid #1b1712; padding:4px 9px 4px 9px; font-size:10px; line-height:1.32;
+  }
+  .datecheck .lbl { color:#b02a1e; font-weight:700; letter-spacing:.08em; }
+  .datecheck b { font-weight:700; }
+  .closing { text-align:center; font-size:9.8px; color:#3d382e; padding-top:4px; }
+</style>
+</head>
+<body>
+
+<div class="hairline">
+  <div>A ONE-PAGE WORLD BRIEFING</div>
+  <div class="c">DAY 329 OF 2026</div>
+  <div>EVERY STORY DATED WEDNESDAY 25 NOV</div>
+</div>
+
+<div class="masthead"><h1>The World at Midweek</h1></div>
+<div class="dateline">WEDNESDAY&nbsp; 25&nbsp; NOVEMBER&nbsp; 2026</div>
+
+<div class="counts">35 STORIES, ALL FROM WEDNESDAY 25 NOV <span class="dot">·</span> EUROPE 8 <span class="dot">·</span> MIDDLE EAST 3 <span class="dot">·</span> ASIA 8 <span class="dot">·</span> AFRICA 5 <span class="dot">·</span> AMERICAS 6 <span class="dot">·</span> OCEANIA 3 <span class="dot">·</span> GLOBAL 2</div>
+
+<div class="topstrip">Russia's own toll: almost 500,000 dead<span class="dia">◆</span>Coalition bombs Hodeidah, Houthis name Jeddah<span class="dia">◆</span>A Pakistani rides Shenzhou-24</div>
+
+<div class="stats">
+  <div class="stat"><div class="n">500k</div><div class="cap">war dead in Russia's own published figures</div></div>
+  <div class="stat"><div class="n">+36%</div><div class="cap">rise in Bangladesh garment workers' minimum wage</div></div>
+  <div class="stat"><div class="n">26</div><div class="cap">miners trapped in a flooded Bogor gold mine</div></div>
+  <div class="stat"><div class="n">5,200</div><div class="cap">heat-linked deaths estimated in England this year</div></div>
+  <div class="stat"><div class="n">−6.2%</div><div class="cap">Kospi's fall as Asia's AI rally unravels</div></div>
+  <div class="stat"><div class="n">30</div><div class="cap">hostages taken in Cartagena — all rescued</div></div>
+</div>
+
+<div class="heroes">
+
+  <div class="hero">
+    <div class="art">
+      <svg viewBox="0 0 312 118" preserveAspectRatio="none">
+        <rect width="312" height="118" fill="#e9eff5"/>
+        <polygon points="0,20 36,12 42,54 30,98 0,106" fill="#cfd6cf"/>
+        <polygon points="42,32 110,18 168,28 176,58 148,88 96,100 46,88 36,56" fill="#e6d18c" stroke="#8a7a3a" stroke-width="1"/>
+        <polygon points="168,28 312,8 312,118 192,118 148,88 176,58" fill="#dde3e8"/>
+        <path d="M150,30 Q142,58 150,86" fill="none" stroke="#b02a1e" stroke-width="2" stroke-dasharray="5 3"/>
+        <g fill="#1b1712">
+          <path d="M132,44 l3.4,6.8 h-6.8 Z M132,56 l3.4,6.8 h-6.8 Z" opacity=".85"/>
+          <path d="M112,66 l3.4,6.8 h-6.8 Z M112,78 l3.4,6.8 h-6.8 Z" opacity=".85"/>
+        </g>
+        <text x="94" y="46" font-size="9.5" font-weight="700" fill="#5c4d14">UKRAINE</text>
+        <text x="248" y="104" font-size="10" font-weight="700" fill="#6b7683">RUSSIA</text>
+        <text x="4" y="30" font-size="8" font-weight="700" fill="#4c554c">POLAND</text>
+        <circle cx="128" cy="96" r="3" fill="#b02a1e"/>
+        <text x="104" y="110" font-size="8" fill="#b02a1e" font-weight="700">Odesa: 2 killed</text>
+        <g transform="translate(186,68)">
+          <rect width="118" height="40" fill="#f6f1e5" stroke="#1b1712" stroke-width="1.4"/>
+          <text x="59" y="18" font-size="14" font-weight="700" text-anchor="middle" fill="#1b1712">≈500,000</text>
+          <text x="59" y="31" font-size="6.1" text-anchor="middle" fill="#3d382e">DEAD, BY MOSCOW'S OWN FIGURES</text>
+        </g>
+      </svg>
+    </div>
+    <div class="tagrow"><span class="tag eu">EUROPE · WAR</span><span class="num">1</span><span class="dateloc">MOSCOW / KYIV</span></div>
+    <h2>Russia's own toll: almost 500,000 dead</h2>
+    <p>Figures published inside Russia put its losses in Ukraine at almost 500,000 dead — a toll Moscow almost never acknowledges, now visible in its own statistics.</p>
+    <div class="src">BBC NEWS, WEDNESDAY</div>
+  </div>
+
+  <div class="hero">
+    <div class="art">
+      <svg viewBox="0 0 312 118" preserveAspectRatio="none">
+        <rect width="312" height="118" fill="#dfeaf2"/>
+        <polygon points="150,4 226,2 262,26 268,62 246,96 214,114 178,104 158,66 146,32" fill="#eee0b8" stroke="#8a7a3a" stroke-width="1"/>
+        <polygon points="158,66 190,60 196,84 172,96 160,82" fill="#d9a441" stroke="#8a6a1f" stroke-width=".8"/>
+        <text x="196" y="20" font-size="8.5" font-weight="700" fill="#5c4d14">SAUDI ARABIA</text>
+        <text x="166" y="80" font-size="8" font-weight="700" fill="#4c3a08">YEMEN</text>
+        <text x="118" y="112" font-size="8.5" font-weight="700" fill="#33607e">RED SEA</text>
+        <circle cx="168" cy="86" r="4.5" fill="#b02a1e"/>
+        <circle cx="168" cy="86" r="9" fill="none" stroke="#b02a1e" stroke-width="1.6"/>
+        <text x="120" y="76" font-size="8.5" font-weight="700" fill="#b02a1e">Hodeidah</text>
+        <circle cx="196" cy="34" r="3.4" fill="#1b1712"/>
+        <text x="202" y="32" font-size="8" fill="#1b1712">Jeddah</text>
+        <circle cx="212" cy="52" r="2.4" fill="#1b1712"/>
+        <text x="218" y="54" font-size="7.4" fill="#1b1712">Saada</text>
+        <circle cx="228" cy="64" r="2.4" fill="#1b1712"/>
+        <text x="234" y="66" font-size="7.4" fill="#1b1712">Amran</text>
+        <path d="M196,40 Q182,58 172,78" fill="none" stroke="#b02a1e" stroke-width="1.8" stroke-dasharray="4 3"/>
+        <path d="M172,78 l-5,-1 3,6 Z" fill="#b02a1e"/>
+        <g transform="translate(238,88)" fill="#1b1712">
+          <path d="M0,6 l3,-4 3,4 -3,8 Z M10,4 l3,-4 3,4 -3,8 Z" opacity=".8"/>
+        </g>
+        <text x="238" y="100" font-size="7.4" fill="#3d382e">drones downed</text>
+        <g transform="translate(8,84)">
+          <rect width="104" height="28" fill="#1b1712"/>
+          <text x="52" y="12" font-size="8" font-weight="700" fill="#f6f1e5" text-anchor="middle">PORT STRUCK</text>
+          <text x="52" y="23" font-size="8" font-weight="700" fill="#f6f1e5" text-anchor="middle">THREAT ISSUED</text>
+        </g>
+      </svg>
+    </div>
+    <div class="tagrow"><span class="tag me">MIDDLE EAST · YEMEN</span><span class="num">2</span><span class="dateloc">HODEIDAH / JEDDAH</span></div>
+    <h2>Coalition bombs Hodeidah; Jeddah named</h2>
+    <p>The Saudi-led coalition strikes Hodeidah port and sites in Saada and Amran after an evacuation warning. The Houthis answer: Jeddah and every Saudi Red Sea port are now targets.</p>
+    <div class="src">REUTERS, WEDNESDAY</div>
+  </div>
+
+  <div class="hero">
+    <div class="art">
+      <svg viewBox="0 0 312 118" preserveAspectRatio="none">
+        <rect width="312" height="118" fill="#e7edf3"/>
+        <polygon points="196,10 268,4 300,28 296,66 262,84 214,76 192,44" fill="#e6d18c" stroke="#8a7a3a" stroke-width="1"/>
+        <text x="222" y="34" font-size="9" font-weight="700" fill="#5c4d14">CHINA</text>
+        <circle cx="216" cy="52" r="3" fill="#b02a1e"/>
+        <text x="186" y="66" font-size="8" font-weight="700" fill="#b02a1e">Jiuquan</text>
+        <path d="M216,50 Q160,18 104,34" fill="none" stroke="#55534a" stroke-width="1.4" stroke-dasharray="5 3"/>
+        <g transform="translate(58,22)">
+          <rect x="14" y="0" width="34" height="13" rx="6" fill="#f6f1e5" stroke="#1b1712" stroke-width="1.4"/>
+          <rect x="0" y="3" width="14" height="7" fill="#9db8cc" stroke="#1b1712" stroke-width="1"/>
+          <rect x="48" y="3" width="14" height="7" fill="#9db8cc" stroke="#1b1712" stroke-width="1"/>
+          <circle cx="24" cy="6.5" r="2.6" fill="#b02a1e"/>
+          <circle cx="33" cy="6.5" r="2.6" fill="#2e7d4f"/>
+          <text x="31" y="24" font-size="7.4" text-anchor="middle" fill="#3d382e">SHENZHOU-24</text>
+        </g>
+        <g transform="translate(128,58)">
+          <path d="M10,34 L16,10 L22,34 Z" fill="#f6f1e5" stroke="#1b1712" stroke-width="1.4"/>
+          <rect x="13.4" y="18" width="5.2" height="7" fill="#b02a1e"/>
+          <path d="M10,34 L4,44 L10,42 Z M22,34 L28,44 L22,42 Z" fill="#1b1712"/>
+          <path d="M13,44 q3,8 3,12 M19,44 q-1,8 -3,12" stroke="#d9a441" stroke-width="2" fill="none"/>
+        </g>
+        <g transform="translate(238,86)">
+          <circle r="11" fill="#2e7d4f"/>
+          <path d="M3,-7 a8.5,8.5 0 1,0 0,14 a7,7 0 1,1 0,-14 Z" fill="#f6f1e5"/>
+          <path d="M5.5,-3.5 l1.1,2.2 2.4,.3 -1.8,1.7 .5,2.4 -2.2,-1.2 -2.1,1.2 .4,-2.4 -1.7,-1.7 2.4,-.3 Z" fill="#f6f1e5"/>
+        </g>
+        <text x="256" y="101" font-size="7.6" fill="#3d382e">Pakistan</text>
+      </svg>
+    </div>
+    <div class="tagrow"><span class="tag as">ASIA · SPACE</span><span class="num">3</span><span class="dateloc">JIUQUAN, CHINA</span></div>
+    <h2>A Pakistani rides Shenzhou-24 into orbit</h2>
+    <p>China's Shenzhou-24 lifts off carrying Muhammad Zeeshan Ali, a former fighter pilot — Pakistan's first astronaut and the first foreigner ever to fly a Chinese crewed mission.</p>
+    <div class="src">BBC NEWS, WEDNESDAY</div>
+  </div>
+
+</div>
+
+<div class="grid">
+
+  <div class="cell" style="border-top-color:#9e2a1e">
+    <div class="tagrow"><span class="num light">4</span><span class="tag as">DHAKA · WAGES</span></div>
+    <h3>Garment wage up 36% after protests</h3>
+    <div class="body"><div class="big">+36%<small>TO 17,000 TAKA</small></div><p>Board votes 4–2 at 2 a.m. to lift the floor from 12,500 taka, after weeks of shutdowns.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#9e2a1e">
+    <div class="tagrow"><span class="num light">5</span><span class="tag as">SEOUL / TOKYO · MARKETS</span></div>
+    <h3>Asia's AI rally unravels</h3>
+    <div class="body"><div class="big">−6.2%<small>KOSPI</small></div><p>Nikkei −2.8%, Taiwan −4.8% as chip stocks slide and US tariff threats return.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#5b3a9e">
+    <div class="tagrow"><span class="num light">6</span><span class="tag am">CARTAGENA · RESCUE</span></div>
+    <h3>All supermarket hostages freed</h3>
+    <div class="body"><div class="big">30<small>TAKEN, ALL OUT</small></div><p>Forces storm the Éxito store before dawn; one captor killed, four detained.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#9e2a1e">
+    <div class="tagrow"><span class="num light">7</span><span class="tag as">BOGOR · DISASTER</span></div>
+    <h3>Rescuers hunt for 26 trapped miners</h3>
+    <div class="body"><div class="big">26<small>TRAPPED</small></div><p>Three bodies found in a flooded illegal gold mine, 100 m deep, as pumps work.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#1f4e79">
+    <div class="tagrow"><span class="num light">8</span><span class="tag eu">LONDON · CLIMATE</span></div>
+    <h3>Heat deaths hit a record in England</h3>
+    <div class="body"><div class="big">5,200<small>ESTIMATED</small></div><p>Heat-linked deaths this year estimated at 5,200, the highest on record.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#a85b12">
+    <div class="tagrow"><span class="num light">9</span><span class="tag me">GAZA · WAR</span></div>
+    <h3>Strike on Shati flat kills four</h3>
+    <div class="body"><div class="big">4<small>KILLED</small></div><p>Pre-dawn strike kills North Gaza's security chief, his wife and two daughters.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#2e7d4f">
+    <div class="tagrow"><span class="num light">10</span><span class="tag af">SAHEL · WAR</span></div>
+    <h3>Drone war reaches the Sahel</h3>
+    <div class="body"><div class="big">5,000<small>KM FROM UKRAINE</small></div><p>Cheap FPV drones honed in Ukraine now hunt Russian fighters in Mali, Reuters finds.</p></div>
+  </div>
+
+  <div class="cell" style="border-top-color:#0e7c86">
+    <div class="tagrow"><span class="num light">11</span><span class="tag oc">CANBERRA · PACIFIC</span></div>
+    <h3>Solomons signs Australia treaty</h3>
+    <div class="body"><div class="big">0<small>FOREIGN BASES</small></div><p>Sweeping security treaty signed in Canberra; Honiara ends its 2022 pact with China.</p></div>
+  </div>
+
+</div>
+
+<div class="bottom">
+
+  <div class="mapbox">
+    <div class="panelhead"><span>WHERE IT HAPPENED</span><span class="thin">pins carry the story numbers</span></div>
+    <div class="mapwrap">
+      <svg viewBox="0 0 336 196">
+        <rect width="336" height="196" fill="#dfeaf2"/>
+        <g stroke="#c3d5e2" stroke-width="1">
+          <path d="M0,49 H336 M0,98 H336 M0,147 H336 M56,0 V196 M112,0 V196 M168,0 V196 M224,0 V196 M280,0 V196"/>
+        </g>
+        <g fill="#e8dfc4" stroke="#b3a67f" stroke-width="1">
+          <polygon points="16,40 34,24 66,18 96,26 104,44 96,58 102,72 90,76 92,88 78,86 66,92 52,80 38,70 24,62"/>
+          <polygon points="64,98 82,92 98,102 94,128 84,156 74,150 66,124 58,108"/>
+          <polygon points="146,32 164,22 180,30 178,44 168,54 154,52 144,44"/>
+          <polygon points="144,66 168,60 188,68 192,86 184,114 170,132 156,116 146,88"/>
+          <polygon points="180,26 236,16 292,18 310,34 306,54 284,62 268,78 254,92 246,72 232,62 214,58 196,50 182,40"/>
+          <polygon points="222,60 240,58 248,74 240,92 226,86 218,72"/>
+          <polygon points="272,112 300,106 310,120 300,138 278,136 268,124"/>
+          <polygon points="246,100 262,98 276,102 262,108 246,106"/>
+        </g>
+        <g font-family="Helvetica Neue, Arial, sans-serif" font-weight="700" text-anchor="middle">
+          <g><circle cx="190" cy="42" r="7" fill="#1f4e79"/><text x="190" y="45" font-size="8" fill="#fff">1</text></g>
+          <g><circle cx="200" cy="80" r="7" fill="#a85b12"/><text x="200" y="83" font-size="8" fill="#fff">2</text></g>
+          <g><circle cx="252" cy="56" r="7" fill="#9e2a1e"/><text x="252" y="59" font-size="8" fill="#fff">3</text></g>
+          <g><circle cx="238" cy="82" r="7" fill="#9e2a1e"/><text x="238" y="85" font-size="8" fill="#fff">4</text></g>
+          <g><circle cx="272" cy="66" r="7" fill="#9e2a1e"/><text x="272" y="69" font-size="8" fill="#fff">5</text></g>
+          <g><circle cx="84" cy="66" r="7" fill="#5b3a9e"/><text x="84" y="69" font-size="8" fill="#fff">6</text></g>
+          <g><circle cx="266" cy="112" r="7" fill="#9e2a1e"/><text x="266" y="115" font-size="8" fill="#fff">7</text></g>
+          <g><circle cx="156" cy="38" r="7" fill="#1f4e79"/><text x="156" y="41" font-size="8" fill="#fff">8</text></g>
+          <g><circle cx="186" cy="72" r="7" fill="#a85b12"/><text x="186" y="75" font-size="8" fill="#fff">9</text></g>
+          <g><circle cx="160" cy="92" r="7.5" fill="#2e7d4f"/><text x="160" y="95" font-size="6.8" fill="#fff">10</text></g>
+          <g><circle cx="306" cy="128" r="7.5" fill="#0e7c86"/><text x="306" y="131" font-size="6.8" fill="#fff">11</text></g>
+          <g><circle cx="176" cy="52" r="7.5" fill="#1f4e79"/><text x="176" y="55" font-size="6.8" fill="#fff">12</text></g>
+          <g><circle cx="212" cy="68" r="7.5" fill="#a85b12"/><text x="212" y="71" font-size="6.8" fill="#fff">18</text></g>
+          <g><circle cx="230" cy="90" r="7.5" fill="#9e2a1e"/><text x="230" y="93" font-size="6.8" fill="#fff">20</text></g>
+          <g><circle cx="168" cy="106" r="7.5" fill="#2e7d4f"/><text x="168" y="109" font-size="6.8" fill="#fff">23</text></g>
+          <g><circle cx="180" cy="122" r="7.5" fill="#2e7d4f"/><text x="180" y="125" font-size="6.8" fill="#fff">25</text></g>
+          <g><circle cx="58" cy="46" r="7.5" fill="#5b3a9e"/><text x="58" y="49" font-size="6.8" fill="#fff">29</text></g>
+          <g><circle cx="298" cy="150" r="7.5" fill="#0e7c86"/><text x="298" y="153" font-size="6.8" fill="#fff">32</text></g>
+          <g><circle cx="322" cy="168" r="7.5" fill="#0e7c86"/><text x="322" y="171" font-size="6.8" fill="#fff">33</text></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="alsobox">
+    <div class="panelhead"><span>ALSO ON WEDNESDAY 25 NOV</span><span class="thin">the rest of the day, in brief</span></div>
+    <div class="also" style="grid-template-rows:repeat(12, 1fr); grid-auto-flow:column;">
+      <div class="it"><span class="num">12</span><span><b>Odesa</b> Russian strike kills 2, injures 3</span></div>
+      <div class="it"><span class="num">13</span><span><b>Washington</b> US shelves business-deal route on Ukraine</span></div>
+      <div class="it"><span class="num">14</span><span><b>Madrid</b> A divided Spain braces for snap election</span></div>
+      <div class="it"><span class="num">15</span><span><b>Paris</b> Sarkozy and Carla Bruni to face trial</span></div>
+      <div class="it"><span class="num">16</span><span><b>Norfolk</b> Two held over burglary at the Waleses' home</span></div>
+      <div class="it"><span class="num">17</span><span><b>Britain</b> Prisoner confesses to killing Ian Huntley</span></div>
+      <div class="it"><span class="num">18</span><span><b>Ras Tanura</b> Saudi defences down drones in the east</span></div>
+      <div class="it"><span class="num">19</span><span><b>Seoul</b> Moscow: Tu-160 flight was planned, lawful</span></div>
+      <div class="it"><span class="num">20</span><span><b>Delhi</b> Food prices squeeze India's family tables</span></div>
+      <div class="it"><span class="num">21</span><span><b>Delhi</b> 'Cockroach' leader barred from London flight</span></div>
+      <div class="it"><span class="num">22</span><span><b>Mumbai</b> Sensex leaps 2.4% against the tide</span></div>
+      <div class="it"><span class="num">23</span><span><b>Khartoum</b> Drones condemned; 28 women seized</span></div>
+      <div class="it"><span class="num">24</span><span><b>Kordofan</b> Army air raid kills 13: rights group</span></div>
+      <div class="it"><span class="num">25</span><span><b>Harare</b> Arrest warrant issued for Mugabe's son</span></div>
+      <div class="it"><span class="num">26</span><span><b>Nigeria</b> Monarch, 92, suspended over assault claims</span></div>
+      <div class="it"><span class="num">27</span><span><b>Washington</b> AG dodges Congress on Nvidia probe</span></div>
+      <div class="it"><span class="num">28</span><span><b>New York</b> Huawei guilty of stealing trade secrets</span></div>
+      <div class="it"><span class="num">29</span><span><b>Washington</b> US readies new plan for global tariffs</span></div>
+      <div class="it"><span class="num">30</span><span><b>Iowa</b> Towns brace for 'apocalyptic' stockpile blast</span></div>
+      <div class="it"><span class="num">31</span><span><b>Maryland</b> Ábrego García leaves US for Spain</span></div>
+      <div class="it"><span class="num">32</span><span><b>Sydney</b> Disguise &amp; surfboard bags: officer on trial</span></div>
+      <div class="it"><span class="num">33</span><span><b>Wellington</b> Cyber reports jump 50%; losses $5.9m</span></div>
+      <div class="it"><span class="num">34</span><span><b>Deep space</b> Hera returns to the asteroid crash scene</span></div>
+      <div class="it"><span class="num">35</span><span><b>Silicon Valley</b> AI staff fear models too unsafe to release</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="datecheck"><span class="lbl">DATE CHECK</span>&nbsp; Left out as other days' news. <b>Tue 24 Nov:</b> Democrats' 259-seat House tally is reached · drone strike wounds 11 at a Riyadh tower · Russian bombers enter Korea's air zone · Senegal reinstated as AFCON winners. <b>Mon 23 Nov:</b> Zambia's opposition leader committed for treason trial. <b>Sun 22 Nov:</b> DR Congo Cessna downed near Minembwe.</div>
+  <div class="closing">Every story here happened or was first reported on <b>Wednesday 25 November 2026</b>, as the named outlets reported it. Maps and drawings are original vector art.</div>
+</div>
+
+</body>
+</html>
